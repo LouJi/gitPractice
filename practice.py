@@ -8,5 +8,5 @@ def wasteTime():
 a = str (datetime.now())
 print('Welcome to the Git Practice')
 print('Program will continue, error is corrected. ')
-print (a)
+print ("The first timestamp is at " + a)
 print('End of Program')
