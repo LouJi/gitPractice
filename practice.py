@@ -2,7 +2,6 @@ from datetime import datetime
 
 def wasteTime():
     for i in range (99999999):
-        #do nothing
         k=1+0
     print('end Waste Time')
     
@@ -10,7 +9,4 @@ a = str (datetime.now())
 print('Welcome to the Git Practice')
 print('Program will continue, error is corrected. ')
 print (a)
-wasteTime()
-NewA= str(datetime.now())
-print(NewA)
 print('End of Program')
