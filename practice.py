@@ -12,7 +12,7 @@ def NewTimeRecord(newTimestamp):
 
 def LastTimestamp():                #fix to read last line only.
     with open('TimestampLog.txt', 'r') as f:
-        return (f.read())        
+        return (list(f)[-1])        
     
 a = str (LastTimestamp())
 print('Welcome to the Git Practice')
