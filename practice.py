@@ -67,3 +67,10 @@ while (Exit == 0):
     print(f'Exit is {Exit}') #for debugging
 #clock()
 print('End of Program')
+
+
+"""
+Can add when merged with master branchaiput for uses to enter email credentials before entering the while loop. or  use default email. 
+Keep in mind you will need to search email addresses for service provider and adjust smtp ports.
+Look at aol,  gmail, msn, outlook, yahoo, etc. Google search popular email providers.
+"""
