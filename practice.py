@@ -1,3 +1,4 @@
+import time
 from datetime import datetime
 
 def wasteTime():
@@ -13,7 +14,18 @@ def NewTimeRecord(newTimestamp):
 def LastTimestamp():                #fix to read last line only.
     with open('TimestampLog.txt', 'r') as f:
         return (list(f)[-1])        
-    
+
+def  pro():
+    time.sleep(2.5)
+ #Only for Winndows right now.   
+def clock():
+    pro()
+    print (time.time() - t0, "seconds wall time")
+    pro()
+    print (time.time() - t0, "seconds wall time")
+    pro()
+    pro()
+    print (time.time() - t0, "seconds wall time")
 
 a = str (LastTimestamp())
 print('Welcome to the Git Practice')
@@ -23,5 +35,7 @@ b= str(datetime.now())
 print('The new timestamp is at ' + b)
 NewTimeRecord(b)
 #DateTime format 
-print(datetime.now().strftime("%A %B %d, %Y"))
+print(f'Today is {datetime.now().strftime("%A %B %d, %Y")}')
+t0 = time.time()
+clock()
 print('End of Program')
