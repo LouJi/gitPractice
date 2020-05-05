@@ -11,5 +11,7 @@ print('Program will continue, error is corrected. ')
 print ("The first timestamp is at " + a) #change the word "first" to "last"
 b= str(datetime.now())
 print('The new timestamp is at ' + b)
+#DateTime format 
+#print(datetime.now().strftime("%A %B %d, %Y"))
 # statement to log variable 'b'
 print('End of Program')
