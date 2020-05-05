@@ -1,3 +1,4 @@
+#turning a file read into a list acn let you use the index of the list .
 from datetime import datetime
 
 def wasteTime():
@@ -7,17 +8,17 @@ def wasteTime():
 
 def NewTimeRecord(newTimestamp):
     with open('TimestampLog.txt', 'a') as f:
-              f.write('\n')
-              f.write(newTimestamp) # add line IDs with "line + ")\t" +" add tothis statment.
+              #f.write()
+              f.write(newTimestamp + '\n') # add line IDs with "line + ")\t" +" add tothis statment.
 
-def LastTimestamp():                #fix to read last line only.
+def LastTimestamp():                
     with open('TimestampLog.txt', 'r') as f:
-        return (list(f)[-1])        
+        return (list(f)[1])        
     
 a = str (LastTimestamp())
 print('Welcome to the Git Practice')
 print('Program will continue, error is corrected. ')
-print ("The last timestamp is at " + a)  #fix to read last line only
+print ("The last timestamp is at " + a)  
 b= str(datetime.now())
 print('The new timestamp is at ' + b)
 NewTimeRecord(b)
