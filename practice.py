@@ -14,17 +14,7 @@ def LastTimestamp():                #fix to read last line only.
     with open('TimestampLog.txt', 'r') as f:
         return (list(f)[-1])        
     
-<<<<<<< HEAD
-a = str (datetime.now()) # this statment will be change to the lasted logged time
-print('Welcome to the Git Practice')
-print('Program will continue, error is corrected. ')
-print ("The first timestamp is at " + a) #change the word "first" to "last"
-b= str(datetime.now())
-print('The new timestamp is at ' + b)
-#DateTime format 
-#print(datetime.now().strftime("%A %B %d, %Y"))
-# statement to log variable 'b'
-=======
+
 a = str (LastTimestamp())
 print('Welcome to the Git Practice')
 print('Program will continue, error is corrected. ')
@@ -32,5 +22,6 @@ print ("The last timestamp is at " + a)  #fix to read last line only
 b= str(datetime.now())
 print('The new timestamp is at ' + b)
 NewTimeRecord(b)
->>>>>>> exterLog
+#DateTime format 
+print(datetime.now().strftime("%A %B %d, %Y"))
 print('End of Program')
