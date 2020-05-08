@@ -38,43 +38,31 @@ def getMsg():
         return(msg.read())
 
 def Email():
-    #5ent_from = googleUser
-    #to = ['ddotdasilva@gmail.com']
+    sent_from = googleUser
+    to=  reciever
     subject = 'gitPractice Test'
-    body = str(f'Sent to you on {dateToday}.\n' + getMsg())
-    #print(gmail_password)
+    body = str(f'Sent to you on {dateToday}.\n' + str(getMsg()))
+    
 
-    email_text = """\
+    email_text = email_text = """\
     From: %s
     To: %s
     Subject: %s
 
     %s
-    """ % (googleUser, ", ".join(to), subject, body)
+    """ % (sent_from, to, subject, body)# Replace 'to' with '",".join(to)' for multiple persons
 
     try:
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
         server.ehlo()
         server.login(googleUser, googlePassword)
-        server.sendmail(googleUser, to, email_text)
+        server.sendmail(sent_from, to, email_text)
         server.close()
 
         print ('Email sent!')
     except:
         print ('Something went wrong. Could not send email.')
-"""    
-def  pro():
-    time.sleep(2.5)
- #Only for Winndows right now.   
-def clock():
-    pro()
-    print (time.time() - t0, "seconds wall time")
-    pro()
-    print (time.time() - t0, "seconds wall time")
-    pro()
-    pro()
-    print (time.time() - t0, "seconds wall time")
-"""
+
 timeLimit= 22 # hard coded for now with be one of 3 option user selected
 Exit= 0
 timeInterval= 5
@@ -90,7 +78,7 @@ dateToday = str(datetime.now().strftime("%A %B %d, %Y"))
 print(f'Today is {dateToday}')
 googleUser= input('Enter your google username: ') #+'@gmail.com'
 googlePassword= input('Enter your password: ')
-to= [input('Who are you notifying. Enter the full email addresss: ')]
+reciever= [input('Who are you notifying. Enter the full email addresss: ')]
 t0 =  int(time.time())
 print(t0) #for debugging
 lastTimeChecked = int(time.time() - t0)
