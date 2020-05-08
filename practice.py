@@ -1,4 +1,5 @@
 import time
+import smtplib
 from datetime import datetime
 
 def wasteTime():
@@ -22,8 +23,8 @@ def CheckTime(lastTimeChecked):
     print(f'Now = {timeCheckNow} | Last = {lastTimeChecked}') #for debugging
     lastTimeChecked = timeCheckNow
     if (compareTime % timeInterval == 0):
-        #go to Email()
-        print('Sent Email')  #for debugging
+        Email()
+        #print('Sent Email')  #for debugging
         if (timeCheckNow >= timeLimit):
             return 1
         return 0
@@ -31,20 +32,37 @@ def CheckTime(lastTimeChecked):
         if (timeCheckNow >= timeLimit):
             return 1
         return 0
-        
-"""    
-def  pro():
-    time.sleep(2.5)
- #Only for Winndows right now.   
-def clock():
-    pro()
-    print (time.time() - t0, "seconds wall time")
-    pro()
-    print (time.time() - t0, "seconds wall time")
-    pro()
-    pro()
-    print (time.time() - t0, "seconds wall time")
-"""
+
+def getMsg():
+    with open('EmailBody.txt') as msg:
+        return(msg.read())
+
+def Email():
+    sent_from = googleUser
+    to=  reciever
+    subject = 'gitPractice Test'
+    body = str(f'Sent to you on {dateToday}.\n' + str(getMsg()))
+    
+
+    email_text = email_text = """\
+    From: %s
+    To: %s
+    Subject: %s
+
+    %s
+    """ % (sent_from, to, subject, body)# Replace 'to' with '",".join(to)' for multiple persons
+
+    try:
+        server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+        server.ehlo()
+        server.login(googleUser, googlePassword)
+        server.sendmail(sent_from, to, email_text)
+        server.close()
+
+        print ('Email sent!')
+    except:
+        print ('Something went wrong. Could not send email.')
+
 timeLimit= 22 # hard coded for now with be one of 3 option user selected
 Exit= 0
 timeInterval= 5
@@ -55,13 +73,18 @@ print ("The last timestamp is at " + a)  #fix to read last line only
 b= str(datetime.now())
 print('The new timestamp is at ' + b)
 NewTimeRecord(b)
-#DateTime format 
-print(f'Today is {datetime.now().strftime("%A %B %d, %Y")}')
+#DateTime format
+dateToday = str(datetime.now().strftime("%A %B %d, %Y"))
+print(f'Today is {dateToday}')
+googleUser= input('Enter your google username: ') #+'@gmail.com'
+googlePassword= input('Enter your password: ')
+reciever= [input('Who are you notifying. Enter the full email addresss: ')]
 t0 =  int(time.time())
 print(t0) #for debugging
 lastTimeChecked = int(time.time() - t0)
 print(f'last{lastTimeChecked}') #for debugging
 
+                      
 while (Exit == 0):
     Exit = CheckTime(lastTimeChecked)
     print(f'Exit is {Exit}') #for debugging
