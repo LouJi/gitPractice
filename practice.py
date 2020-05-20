@@ -63,9 +63,62 @@ def Email():
     except:
         print ('Something went wrong. Could not send email.')
 
-timeLimit= 22 # hard coded for now with be one of 3 option user selected
+def time5m():
+    time = 5 * 60 #5 minutes in seconds
+    ti= "5 minutes"
+    return time, ti
+
+def time15m():
+    time= 15* 60 # 15 minmutes in seconds
+    ti= "15 minutes"
+    return time, ti
+
+def time1h():
+    time= 60 *60 # 1 hour in seconds
+    ti = "1 hour"
+    return time, ti
+
+def time24h():
+    time= (60*60)*24 #24 hours in seconds
+    ti= "24 hours"
+    return time, ti
+
+def timeSwitch():
+    timeSelect= input('Please select a time interval (use the corresponding letter as input): \n a) 5 minutes \n b) 15 minutes \n c) 1 hour \n d) 24 hours \n')
+    switch = { 'a': time5m(), 'b': time15m(), 'c': time1h(), 'd': time24h()}
+    timeInterval, displayTime= switch.get(timeSelect, "Not a Valid Entry")
+    print(displayTime)
+    if displayTime == "Not a Valid Entry":
+        timeSwitch()
+    return timeInterval
+        
+def GetTimeLimit():
+    timeLtd= input('Select a time limit:\n a) 1 hour \n b) 1 day\n c) 2 days\n')
+    if timeLtd == 'a':
+        timeLmt= 3600 # string change to int and an hour in seconds
+    elif timeLtd == 'b':
+        timeLmt= 86400
+    elif timeLtd == 'c':
+        timeLmt= 172800
+    else:
+        print('Invalid Entry')
+        GetTimeLimit()
+    return timeLmt
+
+
+#MAIN starts here
+print('This program will send you an email notice after a certain time has elapsed for 2 days.')
+#perform a check for an integer.
+
+timeInterval= timeSwitch()
+print(timeInterval)
+timeLimit= GetTimeLimit()
+if timeInterval > timeLimit:
+    print('Please select a time limit greater than your time interval.')
+    timeLimit= GetTimeLimit()
+#timeLimit= 172800 # hard coded for now with be one of 3 option user selected
 Exit= 0
-timeInterval= 5
+
 a = str (LastTimestamp())
 print('Welcome to the Git Practice')
 print('Program will continue, error is corrected. ')
@@ -82,7 +135,7 @@ reciever= [input('Who are you notifying. Enter the full email addresss: ')]
 t0 =  int(time.time())
 print(t0) #for debugging
 lastTimeChecked = int(time.time() - t0)
-print(f'last{lastTimeChecked}') #for debugging
+print(f'last {lastTimeChecked}') #for debugging
 
                       
 while (Exit == 0):
